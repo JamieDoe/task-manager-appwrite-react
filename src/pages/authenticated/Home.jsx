@@ -16,22 +16,17 @@ import {
   Header,
 } from '../../components'
 import { useAuth } from '../../userContextProvider'
-import { useNavigate } from 'react-router-dom'
 
 export default function Home() {
-  const { user, logoutUser, isAuth } = useAuth()
+  const { user, logoutUser } = useAuth()
 
   const [tasks, setTasks] = useState([])
   const [formErrors, setFormErrors] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
   console.log('the user', user)
-  const navigate = useNavigate()
 
   useEffect(() => {
-    if (!isAuth) {
-      return navigate('/login')
-    }
     async function fetchTasks() {
       setIsLoading(true)
       try {

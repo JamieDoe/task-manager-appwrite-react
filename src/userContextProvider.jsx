@@ -2,14 +2,12 @@ import { useContext, useState, useEffect, createContext } from 'react'
 import { useAppwriteUtils } from './utils/appwriteConfig'
 
 import { Loader } from './components'
-import { Navigate, redirect } from 'react-router-dom'
 
 const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false)
   const [user, setUser] = useState(null)
-  const [isAuth, setIsAuth] = useState(false)
   const { account } = useAppwriteUtils()
 
   useEffect(() => {
@@ -57,15 +55,15 @@ export const AuthProvider = ({ children }) => {
       const response = await account?.get()
       setUser(response)
     } catch (error) {
-      // if (error.type === 'general_unauthorized_scope') {
-      // }
+      if (error.type === 'general_unauthorized_scope') {
+        console.log(error)
+      }
     }
     setIsLoading(false)
   }
 
   const contextData = {
     user,
-    isAuth,
     registerUser,
     loginUser,
     logoutUser,
