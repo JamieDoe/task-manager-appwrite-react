@@ -1,14 +1,10 @@
-import { Navigate, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { Form, Input, Button } from '../../components'
 import { useAuth } from '../../userContextProvider'
 
 export default function RegisterAccountPage() {
-  const { registerUser, isAuth } = useAuth()
-
-  if (isAuth) {
-    return <Navigate to="/" />
-  }
+  const { registerUser } = useAuth()
 
   async function handleSubmit(evt) {
     evt.preventDefault()

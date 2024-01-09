@@ -1,4 +1,4 @@
-import { Link, Navigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Button, Form, Input } from '../../components'
 import { useAuth } from '../../userContextProvider'
 
@@ -6,11 +6,7 @@ import { useAuth } from '../../userContextProvider'
 
 export default function LoginPage() {
   // const { scrollYProgress } = useScroll()
-  const { loginUser, isAuth } = useAuth()
-
-  if (isAuth) {
-    return <Navigate to="/" />
-  }
+  const { loginUser } = useAuth()
 
   async function handleSubmit(evt) {
     evt.preventDefault()

@@ -9,7 +9,6 @@ const AuthContext = createContext()
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const { account } = useAppwriteUtils()
-  const [isAuth, setIsAuth] = useState(false)
 
   const registerUser = async (userInfo) => {
     try {
@@ -25,7 +24,6 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       console.log(error)
     }
-    setIsAuth(true)
   }
 
   const loginUser = async (userInfo) => {
@@ -40,14 +38,12 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       console.log(error)
     }
-    setIsAuth(true)
   }
 
   const logoutUser = () => {
     try {
       account.deleteSession('current')
       setUser(null)
-      setIsAuth(false)
     } catch (error) {
       console.log(error)
     }
@@ -68,7 +64,6 @@ export const AuthProvider = ({ children }) => {
 
   const contextData = {
     user,
-    isAuth,
     registerUser,
     loginUser,
     logoutUser,
