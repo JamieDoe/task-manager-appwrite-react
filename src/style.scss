@@ -45,8 +45,6 @@ body {
   border: 5px solid #2169ff;
 }
 
-// max-width: 500px;
-
 .task-container {
   display: flex;
   flex-direction: column;
@@ -170,6 +168,8 @@ textarea {
 }
 
 .logout-button {
+  position: absolute;
+  right: 10px;
   background-color: #2169ff;
   border: 2px solid #2169ff;
   color: white;
@@ -189,6 +189,7 @@ textarea {
 }
 
 .page-header {
+  position: relative;
   width: 100%;
   padding: 10px;
   background-color: #fff;
@@ -205,4 +206,25 @@ textarea {
   margin: auto;
   border-radius: 50px;
   background-color: #2169ff;
+}
+
+.logo {
+  background-color: #2169ff;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  width: 150px;
+  padding: 10px;
+  border-radius: 50px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .page-header {
+    justify-content: left;
+  }
+  .logo {
+    margin: 0;
+  }
 }

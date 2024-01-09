@@ -82,6 +82,9 @@ export default function Home() {
     <>
       {isLoading && <Loader />}
       <Header className="page-header">
+        <div className="logo">
+          <h3>TaskManager</h3>
+        </div>
         <Button
           className="logout-button"
           onClick={logoutHandler}
