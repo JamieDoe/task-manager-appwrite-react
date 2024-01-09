@@ -1,8 +1,6 @@
-import Button from './Button'
-
-export default function Form({ handleSubmit, children }) {
+export default function Form({ handleSubmit, className, children }) {
   return (
-    <form className="task-form" onSubmit={handleSubmit}>
+    <form className={className} onSubmit={handleSubmit}>
       {children}
     </form>
   )

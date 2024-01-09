@@ -15,6 +15,21 @@ body {
   margin: auto;
 }
 
+.login-page-container {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-container {
+  display: flex;
+  gap: 20px;
+  text-align: center;
+  width: 100%;
+  flex-direction: column;
+}
+
 .task-form {
   display: flex;
   gap: 20px;
@@ -63,6 +78,7 @@ textarea {
 
 .submit-button {
   background-color: #2169ff;
+  border: 2px solid #2169ff;
   color: white;
   font-weight: 700;
   font-size: 1.2rem;
@@ -72,6 +88,11 @@ textarea {
   border: none;
   cursor: pointer;
   margin: auto;
+  transition: ease-in-out 0.2s;
+}
+.submit-button:hover {
+  background-color: #fff;
+  color: #2169ff;
 }
 
 .delete-button {
@@ -132,4 +153,14 @@ textarea {
       transform: rotate(360deg);
     }
   }
+}
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: #2169ff;
+  transform-origin: 0%;
 }
