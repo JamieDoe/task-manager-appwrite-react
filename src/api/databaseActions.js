@@ -14,7 +14,7 @@ const postToDatabase = async (formData, userId) => {
       title: formData.taskTitle,
       userId: userId,
     })
-    getTasksFromDatabase(userId)
+    return getTasksFromDatabase(userId)
   } catch (error) {
     let formErrors = []
     if (error.name === 'ValidationError') {
