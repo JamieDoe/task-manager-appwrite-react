@@ -1,25 +1,20 @@
-import { Client, Databases, ID } from 'appwrite'
+import { ID, Query } from 'appwrite'
 
 import validationSchema from '../schemas/validationSchema'
+import { appwriteUtils } from '../utils/appwriteConfig'
 
-const client = new Client()
-const database = new Databases(client)
+const { database, DATABASE_ID, COLLECTION_ID } = appwriteUtils()
 
-const DATABASE_ID = import.meta.env.VITE_APPWRITE_DATABASE_ID
-const COLLECTION_ID = import.meta.env.VITE_APPWRITE_COLLECTION_ID
-
-client
-  .setEndpoint(import.meta.env.VITE_APPWRITE_ENDPOINT)
-  .setProject(import.meta.env.VITE_APPWRITE_PROJECT)
-
-const postToDatabase = async (formData) => {
+const postToDatabase = async (formData, userId) => {
   try {
     validationSchema.validateSync(formData, { abortEarly: false })
     await database.createDocument(DATABASE_ID, COLLECTION_ID, ID.unique(), {
       completed: false,
-      title: formData.taskTitle,
       description: formData.taskDescription,
+      title: formData.taskTitle,
+      userId: userId,
     })
+    return getTasksFromDatabase(userId)
   } catch (error) {
     let formErrors = []
     if (error.name === 'ValidationError') {
@@ -40,30 +35,32 @@ function extractFieldAndError(error) {
   return { fieldName, errorMessage: cleanedErrorMessage }
 }
 
-const getTasksFromDatabase = async () => {
+const getTasksFromDatabase = async (userId) => {
   try {
-    const response = await database.listDocuments(DATABASE_ID, COLLECTION_ID)
+    const response = await database.listDocuments(DATABASE_ID, COLLECTION_ID, [
+      Query.equal('userId', [userId]),
+    ])
     return response.documents
   } catch (error) {
     console.log(error)
   }
 }
 
-const deleteTaskFromDatabase = async (taskId) => {
+const deleteTaskFromDatabase = async (taskId, userId) => {
   try {
     await database.deleteDocument(DATABASE_ID, COLLECTION_ID, taskId)
-    return await getTasksFromDatabase()
+    return await getTasksFromDatabase(userId)
   } catch (error) {
     console.log(error)
   }
 }
 
-const updateTaskFromDatabase = async (taskId, checked) => {
+const updateTaskFromDatabase = async (taskId, checked, userId) => {
   try {
     await database.updateDocument(DATABASE_ID, COLLECTION_ID, taskId, {
       completed: checked,
     })
-    return await getTasksFromDatabase()
+    return await getTasksFromDatabase(userId)
   } catch (error) {
     console.log(error)
   }
