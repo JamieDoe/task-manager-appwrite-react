@@ -91,6 +91,9 @@ export default function Home() {
         />
       </Header>
       <div className="form-container">
+        <div>
+          <h1>Add a Task</h1>
+        </div>
         <Form className={'task-form'} handleSubmit={handleSubmit}>
           <div className="input-container">
             <label htmlFor="titleInput">Enter Task Title</label>
@@ -117,19 +120,22 @@ export default function Home() {
           </div>
           <Button type="submit" className="submit-button" text="Add Task" />
         </Form>
+        <div>
+          <div className="divider" />
+        </div>
       </div>
       <div className="task-container">
-        {tasks.length > 0 &&
-          tasks.map((task) => {
-            return (
-              <Task
-                key={task.$id}
-                handleClick={handleClick}
-                updateHandler={updateHandler}
-                task={task}
-              />
-            )
-          })}
+        {tasks.length > 0 && <h1>Your Tasks</h1>}
+        {tasks.map((task) => {
+          return (
+            <Task
+              key={task.$id}
+              handleClick={handleClick}
+              updateHandler={updateHandler}
+              task={task}
+            />
+          )
+        })}
       </div>
     </>
   )

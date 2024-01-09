@@ -2,10 +2,10 @@ import { Link, Navigate } from 'react-router-dom'
 import { Button, Form, Input } from '../../components'
 import { useAuth } from '../../userContextProvider'
 
-import { motion, useScroll } from 'framer-motion'
+// import { motion, useScroll } from 'framer-motion'
 
 export default function LoginPage() {
-  const { scrollYProgress } = useScroll()
+  // const { scrollYProgress } = useScroll()
   const { loginUser, isAuth } = useAuth()
 
   if (isAuth) {
