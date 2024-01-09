@@ -5,7 +5,7 @@ export default function Button(props) {
       type={props.type}
       onClick={props?.onClick}
     >
-      {props.text}
+      {props.children}
     </button>
   )
 }

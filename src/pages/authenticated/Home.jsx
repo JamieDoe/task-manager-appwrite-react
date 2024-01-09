@@ -86,8 +86,9 @@ export default function Home() {
           className="logout-button"
           onClick={logoutHandler}
           type={'button'}
-          text={'logout'}
-        />
+        >
+          Logout
+        </Button>
       </Header>
       <div className="form-container">
         <div>
@@ -117,7 +118,9 @@ export default function Home() {
               errors={formErrors}
             />
           </div>
-          <Button type="submit" className="submit-button" text="Add Task" />
+          <Button type="submit" className="submit-button">
+            Add Task
+          </Button>
         </Form>
         <div>
           <div className="divider" />

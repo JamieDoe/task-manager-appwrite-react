@@ -52,7 +52,7 @@ export default function RegisterAccountPage() {
           placeholder={'Confirm Your Password'}
           // label={'Password'}
         />
-        <Button className={'submit-button'} text={'Register'} />
+        <Button className={'submit-button'}>Register</Button>
       </Form>
       <Link to="/login">Already have an Account? Login</Link>
     </div>

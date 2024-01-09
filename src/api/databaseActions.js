@@ -1,9 +1,9 @@
 import { ID, Query } from 'appwrite'
 
 import validationSchema from '../schemas/validationSchema'
-import { useAppwriteUtils } from '../utils/appwriteConfig'
+import { appwriteUtils } from '../utils/appwriteConfig'
 
-const { database, DATABASE_ID, COLLECTION_ID } = useAppwriteUtils()
+const { database, DATABASE_ID, COLLECTION_ID } = appwriteUtils()
 
 const postToDatabase = async (formData, userId) => {
   try {

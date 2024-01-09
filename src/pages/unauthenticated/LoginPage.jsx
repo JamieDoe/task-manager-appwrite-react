@@ -44,7 +44,7 @@ export default function LoginPage() {
             placeholder={'Password'}
             // label={'Password'}
           />
-          <Button className={'submit-button'} text={'Login'} />
+          <Button className={'submit-button'}>Login</Button>
         </Form>
         <Link to="/register">Register </Link>
       </div>

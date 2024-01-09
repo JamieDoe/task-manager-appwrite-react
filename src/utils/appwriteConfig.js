@@ -6,7 +6,7 @@ client
   .setEndpoint(import.meta.env.VITE_APPWRITE_ENDPOINT)
   .setProject(import.meta.env.VITE_APPWRITE_PROJECT)
 
-export function useAppwriteUtils() {
+export function appwriteUtils() {
   const account = new Account(client)
   const database = new Databases(client)
   const DATABASE_ID = import.meta.env.VITE_APPWRITE_DATABASE_ID
