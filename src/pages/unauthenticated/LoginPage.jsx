@@ -18,7 +18,6 @@ export default function LoginPage() {
     const formObject = Object.fromEntries(formData)
     try {
       await loginUser(formObject)
-      return <Navigate to="/" />
     } catch (err) {
       console.log(err)
     }
@@ -26,10 +25,10 @@ export default function LoginPage() {
 
   return (
     <div className="login-page-container">
-      <motion.div
+      {/* <motion.div
         className="progress-bar"
         style={{ scaleX: scrollYProgress }}
-      />
+      /> */}
       <div className="form-container login-container">
         <h1>Login</h1>
         <Form className={'task-form'} handleSubmit={handleSubmit}>
@@ -52,90 +51,6 @@ export default function LoginPage() {
           <Button className={'submit-button'} text={'Login'} />
         </Form>
         <Link to="/register">Register </Link>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe eaque
-          cumque cupiditate a molestias iste illo consequatur quos ratione odit
-          obcaecati perferendis, facere alias soluta beatae aperiam debitis
-          excepturi dolorem.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe eaque
-          cumque cupiditate a molestias iste illo consequatur quos ratione odit
-          obcaecati perferendis, facere alias soluta beatae aperiam debitis
-          excepturi dolorem.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe eaque
-          cumque cupiditate a molestias iste illo consequatur quos ratione odit
-          obcaecati perferendis, facere alias soluta beatae aperiam debitis
-          excepturi dolorem.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe eaque
-          cumque cupiditate a molestias iste illo consequatur quos ratione odit
-          obcaecati perferendis, facere alias soluta beatae aperiam debitis
-          excepturi dolorem.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe eaque
-          cumque cupiditate a molestias iste illo consequatur quos ratione odit
-          obcaecati perferendis, facere alias soluta beatae aperiam debitis
-          excepturi dolorem.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe eaque
-          cumque cupiditate a molestias iste illo consequatur quos ratione odit
-          obcaecati perferendis, facere alias soluta beatae aperiam debitis
-          excepturi dolorem.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe eaque
-          cumque cupiditate a molestias iste illo consequatur quos ratione odit
-          obcaecati perferendis, facere alias soluta beatae aperiam debitis
-          excepturi dolorem.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe eaque
-          cumque cupiditate a molestias iste illo consequatur quos ratione odit
-          obcaecati perferendis, facere alias soluta beatae aperiam debitis
-          excepturi dolorem.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe eaque
-          cumque cupiditate a molestias iste illo consequatur quos ratione odit
-          obcaecati perferendis, facere alias soluta beatae aperiam debitis
-          excepturi dolorem.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe eaque
-          cumque cupiditate a molestias iste illo consequatur quos ratione odit
-          obcaecati perferendis, facere alias soluta beatae aperiam debitis
-          excepturi dolorem.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe eaque
-          cumque cupiditate a molestias iste illo consequatur quos ratione odit
-          obcaecati perferendis, facere alias soluta beatae aperiam debitis
-          excepturi dolorem.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe eaque
-          cumque cupiditate a molestias iste illo consequatur quos ratione odit
-          obcaecati perferendis, facere alias soluta beatae aperiam debitis
-          excepturi dolorem.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe eaque
-          cumque cupiditate a molestias iste illo consequatur quos ratione odit
-          obcaecati perferendis, facere alias soluta beatae aperiam debitis
-          excepturi dolorem.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe eaque
-          cumque cupiditate a molestias iste illo consequatur quos ratione odit
-          obcaecati perferendis, facere alias soluta beatae aperiam debitis
-          excepturi dolorem.
-        </p>
       </div>
     </div>
   )

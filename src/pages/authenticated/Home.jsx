@@ -24,8 +24,6 @@ export default function Home() {
   const [formErrors, setFormErrors] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
-  console.log('the user', user)
-
   useEffect(() => {
     async function fetchTasks() {
       setIsLoading(true)
@@ -85,7 +83,12 @@ export default function Home() {
     <>
       {isLoading && <Loader />}
       <Header className="page-header">
-        <Button onClick={logoutHandler} type={'button'} text={'loggout'} />
+        <Button
+          className="logout-button"
+          onClick={logoutHandler}
+          type={'button'}
+          text={'logout'}
+        />
       </Header>
       <div className="form-container">
         <Form className={'task-form'} handleSubmit={handleSubmit}>

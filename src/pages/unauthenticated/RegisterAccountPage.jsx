@@ -2,6 +2,7 @@ import { Navigate, Link } from 'react-router-dom'
 
 import { Form, Input, Button } from '../../components'
 import { useAuth } from '../../userContextProvider'
+import toast from 'react-hot-toast'
 
 export default function RegisterAccountPage() {
   const { registerUser, isAuth } = useAuth()
@@ -16,7 +17,6 @@ export default function RegisterAccountPage() {
     const formObject = Object.fromEntries(formData)
     try {
       await registerUser(formObject)
-      return <Navigate to="/" />
     } catch (err) {
       console.log(err)
     }

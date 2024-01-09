@@ -3,7 +3,7 @@ import { ID } from 'appwrite'
 
 import { useAppwriteUtils } from './utils/appwriteConfig'
 import registerValidationSchema from './schemas/registerValidationSchema'
-
+import toast from 'react-hot-toast'
 const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
@@ -21,6 +21,7 @@ export const AuthProvider = ({ children }) => {
         userInfo.nameInput,
       )
       setUser(response)
+      toast.success(`Welcome to the TaskManager ${response.name}!`)
     } catch (error) {
       console.log(error)
     }
@@ -35,10 +36,11 @@ export const AuthProvider = ({ children }) => {
       )
       const accountDetails = await account.get()
       setUser(accountDetails)
-      setIsAuth(true)
+      toast.success(`Welcome back ${accountDetails.name}`)
     } catch (error) {
       console.log(error)
     }
+    setIsAuth(true)
   }
 
   const logoutUser = () => {
