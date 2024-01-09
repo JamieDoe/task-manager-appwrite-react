@@ -53,14 +53,14 @@ export default function Home() {
       setIsLoading(true)
       await postToDatabase(formObject, user.$id)
       setFormErrors([])
-      const response = await getTasksFromDatabase()
-      setTasks(response)
       evt.target.reset()
       setIsLoading(false)
     } catch (error) {
       setIsLoading(false)
       setFormErrors(error)
     }
+    const response = await getTasksFromDatabase()
+    setTasks(response)
   }
 
   async function handleClick(taskId) {

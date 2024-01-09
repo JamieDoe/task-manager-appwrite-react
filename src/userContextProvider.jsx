@@ -1,42 +1,27 @@
 import { useContext, useState, useEffect, createContext } from 'react'
 import { useAppwriteUtils } from './utils/appwriteConfig'
 
-import { Loader } from './components'
-
 const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
-  const [isLoading, setIsLoading] = useState(false)
   const [user, setUser] = useState(null)
   const { account } = useAppwriteUtils()
-
-  useEffect(() => {
-    async function fetchUserStatus() {
-      try {
-        checkUserStatus()
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    fetchUserStatus()
-  }, [])
+  const [isAuth, setIsAuth] = useState(false)
 
   const registerUser = (userInfo) => {}
 
   const loginUser = async (userInfo) => {
-    setIsLoading(true)
     try {
       await account.createEmailSession(
         userInfo.emailInput,
         userInfo.passwordInput,
       )
-      setIsAuth(true)
       const accountDetails = await account.get()
       setUser(accountDetails)
+      setIsAuth(true)
     } catch (error) {
       console.log(error)
     }
-    setIsLoading(false)
   }
 
   const logoutUser = () => {
@@ -51,7 +36,6 @@ export const AuthProvider = ({ children }) => {
 
   const checkUserStatus = async () => {
     try {
-      setIsLoading(true)
       const response = await account?.get()
       setUser(response)
     } catch (error) {
@@ -59,11 +43,13 @@ export const AuthProvider = ({ children }) => {
         console.log(error)
       }
     }
-    setIsLoading(false)
   }
+
+  console.log('the user', user)
 
   const contextData = {
     user,
+    isAuth,
     registerUser,
     loginUser,
     logoutUser,
@@ -71,9 +57,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={contextData}>
-      {isLoading ? <Loader /> : children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={contextData}>{children}</AuthContext.Provider>
   )
 }
 

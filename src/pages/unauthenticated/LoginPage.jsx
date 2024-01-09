@@ -6,7 +6,11 @@ import { motion, useScroll } from 'framer-motion'
 
 export default function LoginPage() {
   const { scrollYProgress } = useScroll()
-  const { loginUser } = useAuth()
+  const { loginUser, isAuth } = useAuth()
+
+  if (isAuth) {
+    return <Navigate to="/" />
+  }
 
   async function handleSubmit(evt) {
     evt.preventDefault()
