@@ -6,6 +6,7 @@ import { useAuth } from './userContextProvider'
 import PrivateRoutes from './components/PriviateRoutes'
 import { useEffect, useState } from 'react'
 import { Loader } from './components'
+import RegisterAccountPage from './pages/unauthenticated/RegisterAccountPage'
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
@@ -28,9 +29,8 @@ function App() {
           <Route element={<PrivateRoutes />}>
             <Route path="/" element={<Home />} />
           </Route>
-
           <Route path="/login" element={<LoginPage />} />
-          {/* <Route path="/register" element={<Home />} /> */}
+          <Route path="/register" element={<RegisterAccountPage />} />
         </Routes>
       </Router>
     </div>

@@ -1,5 +1,8 @@
-import { useContext, useState, useEffect, createContext } from 'react'
+import { useContext, useState, createContext } from 'react'
+import { ID } from 'appwrite'
+
 import { useAppwriteUtils } from './utils/appwriteConfig'
+import registerValidationSchema from './schemas/registerValidationSchema'
 
 const AuthContext = createContext()
 
@@ -8,7 +11,21 @@ export const AuthProvider = ({ children }) => {
   const { account } = useAppwriteUtils()
   const [isAuth, setIsAuth] = useState(false)
 
-  const registerUser = (userInfo) => {}
+  const registerUser = async (userInfo) => {
+    try {
+      registerValidationSchema.validateSync(userInfo, { abortEarly: false })
+      const response = await account.create(
+        ID.unique(),
+        userInfo.emailInput,
+        userInfo.passwordInput,
+        userInfo.nameInput,
+      )
+      setUser(response)
+    } catch (error) {
+      console.log(error)
+    }
+    setIsAuth(true)
+  }
 
   const loginUser = async (userInfo) => {
     try {

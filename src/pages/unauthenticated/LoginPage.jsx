@@ -1,4 +1,4 @@
-import { Navigate } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { Button, Form, Input } from '../../components'
 import { useAuth } from '../../userContextProvider'
 
@@ -51,6 +51,7 @@ export default function LoginPage() {
           />
           <Button className={'submit-button'} text={'Login'} />
         </Form>
+        <Link to="/register">Register </Link>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe eaque
           cumque cupiditate a molestias iste illo consequatur quos ratione odit
