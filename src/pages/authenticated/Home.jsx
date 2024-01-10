@@ -37,6 +37,7 @@ export default function Home() {
     }
 
     fetchTasks()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   async function handleSubmit(evt) {

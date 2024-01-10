@@ -17,6 +17,7 @@ function App() {
     checkUserStatus().then(() => {
       setIsLoading(false)
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   if (isLoading) {
